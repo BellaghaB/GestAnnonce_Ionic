@@ -1,20 +1,101 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
+    
   </ion-header>
+  <ion-content class="ion-padding">
+   
+    <ion-list>
+      <ion-item routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>HOME</ion-label>
+      </ion-item>
+      <ion-item routerLink="">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>PROFILE</ion-label>
+      </ion-item>
+      <ion-item routerLink="/mes-annonces">
+        <ion-icon name="newspaper-outline"></ion-icon>
+        <ion-label>MES ANNONCES</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-label>LOGOUT</ion-label>
+      </ion-item>
+    </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Les annonces</ion-title>
+      <ion-buttons slot="end" class="ion-margin">
+      <ion-icon routerLink="/type-annonce" slot="icon-only" name="add-circle-outline" ></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-img src="././assets/images/best_immo_logo.png"></ion-img>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid> -->
+    <ion-segment>
+      <ion-segment-button value="immobilier" (click)="getAnnonce('immobilier')">
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="vehicule" (click)="getAnnonce('vehicule')">
+      <ion-icon name="car-sport-outline"></ion-icon>
+      </ion-segment-button>
+      </ion-segment>
+  </ion-header>
+  <ion-content class="ion-padding">
+    
+    
+    <ion-card [routerLink]="['/details', annonce.id]" *ngFor="let annonce of tab">
+      <ion-card-header>
+        <ion-item><ion-card-title style="font-size: 15px;">{{annonce.titre}}</ion-card-title>
+        
+          <ion-badge slot="end">{{annonce.prix}} TND</ion-badge>
+         
+        </ion-item>
+        <ion-card-subtitle class="ion-margin">{{annonce.gouver}}</ion-card-subtitle>
+        <ion-img [src]= "annonce.images[0]"></ion-img>
+        
+        
+      </ion-card-header>
+    
+      <ion-card-content>
+      {{annonce.desc}}
+      </ion-card-content>
+    </ion-card>
+    
+    
+      <!-- <ion-card-header>
+        <ion-item><ion-card-title style="font-size: 15px;">Villa à vendre</ion-card-title>
+        
+          <ion-badge slot="end">250,000 MD</ion-badge>
+         
+        </ion-item>
+        <ion-card-subtitle class="ion-margin">Tunis</ion-card-subtitle>
+        <ion-img src="././assets/images/villa2.jpg"></ion-img>
+        
+        
+      </ion-card-header>
+    
+      <ion-card-content>
+      
+        Vision-R immobilier, vous propose à la vente sur l’Ile Maurice cette villa sur Pereybère (Nord Ile Maurice).
+
+Ce bien est accessible aux étrangers, s’adresse donc soit à un investisseur pour une rentabilité locative, soit à un acheteur qui désire y vivre.
+      </ion-card-content>
+    </ion-card> -->
+  </ion-content>
+</div>

@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  // customCounterFormatter(inputLength: number, maxLength: number) {
+  //   return `${maxLength - inputLength} characters remaining`;
+  // }
   constructor() {}
 }

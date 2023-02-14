@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter Véhicule</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/type-annonce"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-margin">
+    <form #f="ngForm">
+     
+      <ion-item>
+        <ion-label position="floating">Titre</ion-label>
+        <ion-input #i="ngModel" required ngModel  type="text" name="titre" id="titre" placeholder="Ajouter un titre"></ion-input>
+      <!-- <div *ngIf="i.invalid" class="alert alert-danger">Ce champ est obligatoire</div> -->  
+    </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating" for="marque">Marque</ion-label>
+          <ion-select ngModel required aria-label="Marque" interface="popover" placeholder="Choisir la marque" name="marque">
+            <ion-select-option value="peugeot">Peugeot</ion-select-option>
+            <ion-select-option value="renault">Renault</ion-select-option>
+            <ion-select-option value="kia">Kia</ion-select-option>
+            <ion-select-option value="alpha Romeo">Alpha Romeo</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" for="modele">Modèle</ion-label>
+          <ion-select ngModel required aria-label="Modèle" interface="popover" placeholder="Choisir le modèle" name="modele">
+            <ion-select-option value="206">206</ion-select-option>
+            <ion-select-option value="208">208</ion-select-option>
+            <ion-select-option value="partner">Partner</ion-select-option>
+            <ion-select-option value="renault">rio</ion-select-option>
+            <ion-select-option value="picanto">picanto</ion-select-option>
+            <ion-select-option value="rio">rio</ion-select-option>
+            <ion-select-option value="mito">Mito</ion-select-option>
+            <ion-select-option value="stelvio">Stelvio</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label position="floating" for="couleur">Couleur</ion-label>
+        
+          <ion-select ngModel aria-label="Couleur" name="couleur" placeholder="choisir le couleur">
+          <ion-select-option value="rouge">Rouge</ion-select-option>
+          <ion-select-option value="bleu">Bleu</ion-select-option>
+          <ion-select-option value="vert">Vert</ion-select-option>
+          <ion-select-option value="gris">Gris</ion-select-option>
+          <ion-select-option value="blanc">BLanc</ion-select-option>
+          <ion-select-option value="noir">Noir</ion-select-option>
+          
+        </ion-select>
+      
+      </ion-item>
+      <ion-item><ion-label position="floating" for="prix">Prix</ion-label>
+      <ion-input ngModel required type="text" name="prix" id="prix" placeholder="100000 TND"></ion-input></ion-item>
+      <ion-item><ion-label position="floating" for="puissance">puissance</ion-label>
+      <ion-input ngModel required type="number" name="puissance" id="puissance" placeholder="4"></ion-input></ion-item>
+      
+      <ion-item>
+        <ion-label position="floating" for="energie">Energie</ion-label>
+        
+          <ion-select ngModel aria-label="energie" name="energie" placeholder="choisir l'energie'">
+          <ion-select-option value="essence">Essence</ion-select-option>
+          <ion-select-option value="diesel">Diesel</ion-select-option>
+          <ion-select-option value="electrique">Electrique</ion-select-option>
+        
+          
+        </ion-select>
+       
+      </ion-item>
+      
+      <ion-item><ion-label position="floating" for="kilometrage">Kilomètrage</ion-label>
+      <ion-input ngModel  type="text" name="kilometrage" id="kilometrage" placeholder="100000 km"></ion-input></ion-item>
+      <ion-item><ion-label position="floating" for="desc">Description</ion-label>
+      <ion-input  [(ngModel)]="inputValue" type="textarea"  name="desc" id="desc"  maxlength="500"></ion-input></ion-item>
+ <!-- <ion-item><ion-label position="floating" for="desc">{{100 - inputValue.length}} characters remaining </ion-label>  -->
+  <ion-item><ion-label position="floating" for="images">Image</ion-label>
+      <ion-input label="Images" labelPlacement="floating" ngModel  type="url" name="images" id="images" placeholder="http/www.image.jpg, http/..."></ion-input></ion-item>
+      
+
+      <input type="file" (change)="uploadImages($event)" multiple />
+
+
+     
+        <ion-list>
+          
+          <ion-item>
+            <ion-label position="floating" for="options">Options</ion-label>
+            <ion-select ngModel aria-label="Options" name="options" placeholder="choisir d'autres options" [multiple]="true">
+              <ion-select-option value="fermeture centrale">Fermeture centrale</ion-select-option>
+              <ion-select-option value="vitre electrique">Vitre electrique</ion-select-option>
+              <ion-select-option value="Climatiseur">Climatiseur</ion-select-option>
+              
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <!-- <ion-input ngModel  type="text" name="options" id="options" placeholder="Gaz de ville, Chauffage centrale, ..."></ion-input> -->
+     
+      <ion-button color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
+    </form>
+
+  </div>
+</ion-content>

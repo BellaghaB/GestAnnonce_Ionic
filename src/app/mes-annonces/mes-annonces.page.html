@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mes Annonces</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+<ion-grid>
+      <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-img src="././assets/images/best_immo_logo.png"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card *ngFor="let annonce of tab">
+      <ion-item-sliding>
+      <ion-item [routerLink]="['/details', annonce.id]" >
+        <ion-thumbnail slot="start" >
+          <ion-img [src]="annonce.images[0]"></ion-img>
+        </ion-thumbnail>
+        <ion-label>{{annonce.titre}}</ion-label>
+        <ion-badge slot="end">{{annonce.prix}} TND</ion-badge>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option [routerLink]="['/update', annonce.id]">Modifier</ion-item-option>
+        <ion-item-option color="danger" (click)="presentAlert(annonce.id)">Supprimer</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-card>
+</ion-content>

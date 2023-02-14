@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title>Type Annonce</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-item><ion-img src="././assets/images/best_immo_logo.png"></ion-img></ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-select [(ngModel)]="selectedOption" aria-label="Type annonce" interface="action-sheet" placeholder="Choisir le type de l'annonce" style="vertical-align: middle;">
+        <ion-select-option value="immobilier">Immobilier</ion-select-option>
+        <ion-select-option value="vehicule">Véhicule</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button size="block" *ngIf="selectedOption === 'immobilier'" routerLink="/add">Valider</ion-button>
+  <ion-button size="block" *ngIf="selectedOption === 'vehicule'" routerLink="/add-vehicule">Valider</ion-button>
+  <ion-button size="block" *ngIf="selectedOption == null" [disabled]="true">Valider</ion-button>
+</ion-content>

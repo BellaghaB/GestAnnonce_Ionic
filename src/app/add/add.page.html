@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajouter une annonce</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-img src="././assets/images/best_immo_logo.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <div class="ion-margin">
+    <form #f="ngForm">
+     
+      <ion-item>
+        <ion-label position="floating">Titre</ion-label>
+        <ion-input #i="ngModel" required ngModel  type="text" name="titre" id="titre" placeholder="Ajouter un titre"></ion-input>
+      <!-- <div *ngIf="i.invalid" class="alert alert-danger">Ce champ est obligatoire</div> -->  
+    </ion-item>
+    <ion-item><ion-label position="floating" for="adresse">Adresse</ion-label>
+      <ion-input ngModel required type="text" name="adresse" id="adresse" placeholder="Centre urbain nord, 2026 Tunis"></ion-input></ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating" for="gouver">Région</ion-label>
+          <ion-select ngModel required aria-label="Région" interface="popover" placeholder="Choisir la région" name="gouver">
+            <ion-select-option value="Tunis">Tunis</ion-select-option>
+            <ion-select-option value="Ariana">Ariana</ion-select-option>
+            <ion-select-option value="Manouba">Manouba</ion-select-option>
+            <ion-select-option value="Ben Arous">Ben Arous</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item><ion-label position="floating" for="prix">Prix</ion-label>
+      <ion-input ngModel required type="text" name="prix" id="prix" placeholder="100000 TND"></ion-input></ion-item>
+      <ion-item><ion-label position="floating" for="nbPiece">Nombre de piece</ion-label>
+      <ion-input ngModel required type="number" name="nbPiece" id="nbPiece" placeholder="0"></ion-input></ion-item>
+      <ion-item><ion-label position="floating" for="superficie">Superficie</ion-label>
+      <ion-input ngModel  type="text" name="superficie" id="superficie" placeholder="100 m²"></ion-input></ion-item>
+      <ion-item><ion-label position="floating" for="desc">Description</ion-label>
+      <ion-input  [(ngModel)]="inputValue" type="textarea"  name="desc" id="desc"  maxlength="500"></ion-input></ion-item>
+ <!-- <ion-item><ion-label position="floating" for="desc">{{100 - inputValue.length}} characters remaining </ion-label>  -->
+  <ion-item><ion-label position="floating" for="images">Image</ion-label>
+      <ion-input label="Images" labelPlacement="floating" ngModel  type="url" name="images" id="images" placeholder="http/www.image.jpg, http/..."></ion-input></ion-item>
+      
+
+      <input type="file" (change)="uploadImages($event)" multiple />
+
+
+     
+        <ion-list>
+          
+          <ion-item>
+            <ion-label position="floating" for="options">Options</ion-label>
+            <ion-select ngModel aria-label="Options" name="options" placeholder="choisir d'autres options" [multiple]="true">
+              <ion-select-option value="Gaz de ville">Gaz de ville</ion-select-option>
+              <ion-select-option value="Chauffage centrale">Chauffage centrale</ion-select-option>
+              <ion-select-option value="Climatiseur">Climatiseur</ion-select-option>
+              <ion-select-option value="Meublé">Meublé</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <!-- <ion-input ngModel  type="text" name="options" id="options" placeholder="Gaz de ville, Chauffage centrale, ..."></ion-input> -->
+     
+      <ion-button color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
+    </form>
+
+  </div>
+</ion-content>
