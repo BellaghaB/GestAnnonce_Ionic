@@ -17,6 +17,10 @@ export class HomePage implements OnInit {
     console.log(this.tab);
     
   }
+  getAllAnnonces(){
+    this.tab = this.listAnnonces.getAllAnnonces();
+    this.ngOnInit();
+  }
   getAnnonce(categ){
    this.tab = this.listAnnonces.getAnnonceByCategorie(categ);
    console.log(this.tab);

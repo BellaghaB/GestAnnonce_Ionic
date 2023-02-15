@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-grid>
+  <ion-grid>
     <ion-row>
       <ion-col size="6" offset="3">
-        <ion-img src="././assets/images/best_immo_logo.png"></ion-img>
+        <ion-img src="././assets/images/immo_logo.png"></ion-img>
       </ion-col>
     </ion-row>
-  </ion-grid> -->
+  </ion-grid>
   <div class="ion-margin">
     <form #f="ngForm">
      
@@ -46,12 +46,12 @@
       <ion-item><ion-label position="floating" for="desc">Description</ion-label>
       <ion-input  [(ngModel)]="inputValue" type="textarea"  name="desc" id="desc"  maxlength="500"></ion-input></ion-item>
  <!-- <ion-item><ion-label position="floating" for="desc">{{100 - inputValue.length}} characters remaining </ion-label>  -->
-  <ion-item><ion-label position="floating" for="images">Image</ion-label>
+  <ion-item><ion-label position="floating" for="images">Image by url</ion-label>
       <ion-input label="Images" labelPlacement="floating" ngModel  type="url" name="images" id="images" placeholder="http/www.image.jpg, http/..."></ion-input></ion-item>
-      
-
-      <input type="file" (change)="uploadImages($event)" multiple />
-
+      <ion-note slot="helper">Enter url(s), use seperator ","</ion-note>
+      <ion-item><ion-label position="stacked" for="imagefile">Image</ion-label>
+      <ion-input type="file" (change)="uploadImages($event)" multiple></ion-input>
+</ion-item>
 
      
         <ion-list>
@@ -68,7 +68,7 @@
         </ion-list>
         <!-- <ion-input ngModel  type="text" name="options" id="options" placeholder="Gaz de ville, Chauffage centrale, ..."></ion-input> -->
      
-      <ion-button color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
+      <ion-button size="block" color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
     </form>
 
   </div>

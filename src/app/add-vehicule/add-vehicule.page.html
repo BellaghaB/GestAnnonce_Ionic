@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-img src="././assets/images/car_logo2.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <div class="ion-margin">
     <form #f="ngForm">
      
@@ -55,14 +62,14 @@
       
       </ion-item>
       <ion-item><ion-label position="floating" for="prix">Prix</ion-label>
-      <ion-input ngModel required type="text" name="prix" id="prix" placeholder="100000 TND"></ion-input></ion-item>
+      <ion-input ngModel required type="number" name="prix" id="prix" placeholder="100000 TND"></ion-input></ion-item>
       <ion-item><ion-label position="floating" for="puissance">puissance</ion-label>
       <ion-input ngModel required type="number" name="puissance" id="puissance" placeholder="4"></ion-input></ion-item>
       
       <ion-item>
         <ion-label position="floating" for="energie">Energie</ion-label>
         
-          <ion-select ngModel aria-label="energie" name="energie" placeholder="choisir l'energie'">
+          <ion-select ngModel required aria-label="energie" name="energie" placeholder="choisir l'energie'">
           <ion-select-option value="essence">Essence</ion-select-option>
           <ion-select-option value="diesel">Diesel</ion-select-option>
           <ion-select-option value="electrique">Electrique</ion-select-option>
@@ -73,15 +80,16 @@
       </ion-item>
       
       <ion-item><ion-label position="floating" for="kilometrage">Kilomètrage</ion-label>
-      <ion-input ngModel  type="text" name="kilometrage" id="kilometrage" placeholder="100000 km"></ion-input></ion-item>
+      <ion-input ngModel required type="number" name="kilometrage" id="kilometrage" placeholder="100000 km"></ion-input></ion-item>
       <ion-item><ion-label position="floating" for="desc">Description</ion-label>
       <ion-input  [(ngModel)]="inputValue" type="textarea"  name="desc" id="desc"  maxlength="500"></ion-input></ion-item>
  <!-- <ion-item><ion-label position="floating" for="desc">{{100 - inputValue.length}} characters remaining </ion-label>  -->
-  <ion-item><ion-label position="floating" for="images">Image</ion-label>
-      <ion-input label="Images" labelPlacement="floating" ngModel  type="url" name="images" id="images" placeholder="http/www.image.jpg, http/..."></ion-input></ion-item>
-      
-
-      <input type="file" (change)="uploadImages($event)" multiple />
+  <ion-item><ion-label position="floating" for="images">Image by url</ion-label>
+    <ion-input label="Images" labelPlacement="floating" ngModel  type="url" name="images" id="images" placeholder="http/www.image.jpg, http/..."></ion-input></ion-item>
+    <ion-note slot="helper">Enter url(s), use seperator ","</ion-note>
+    <ion-item><ion-label position="stacked" for="imagefile">Image</ion-label>
+    <ion-input type="file" (change)="uploadImages($event)" multiple></ion-input>
+</ion-item>
 
 
      
@@ -99,7 +107,7 @@
         </ion-list>
         <!-- <ion-input ngModel  type="text" name="options" id="options" placeholder="Gaz de ville, Chauffage centrale, ..."></ion-input> -->
      
-      <ion-button color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
+      <ion-button size="block" color="primary" (click)="addNewAnnonce(f.value)">Ajouter</ion-button>
     </form>
 
   </div>

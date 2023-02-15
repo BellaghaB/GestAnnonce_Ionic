@@ -14,8 +14,9 @@ export class MesAnnoncesPage implements OnInit {
   tab = [];
   constructor(private listAnnonces: ListAnnoncesService, private alertCtrl : AlertController, private router: Router ) {}
   ngOnInit(): void {
-    this.tab = this.listAnnonces.getAllAnnonces();
+    this.tab = this.listAnnonces.getAnnonceByUser(1);
   }
+
   async presentAlert(id) {
     
     const alert = await this.alertCtrl.create({

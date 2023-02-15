@@ -12,6 +12,7 @@ export class UpdatePage implements OnInit {
   selectedAnnonce;
 inputValue='';
 
+preview: string;
   constructor(
     private activatedRoute : ActivatedRoute,
    
@@ -26,7 +27,21 @@ inputValue='';
   updateAnnonce(valueForm) {
     console.log(this.selectedAnnonce);
     this.annonceSer.updateAnnonce(valueForm);
+    console.log(valueForm);
     this.router.navigateByUrl('/home');
+  }
+  uploadImages(event) {
+    let files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      let reader = new FileReader();
+      reader.onload = (e: any) => {
+      console.log(e.target.result);
+      // console.log(files[0]);
+      console.log(files[1].data);
+        // do something with the image data, such as sending it to a server
+      };
+      reader.readAsDataURL(files[i]);
+    }
   }
 
 }

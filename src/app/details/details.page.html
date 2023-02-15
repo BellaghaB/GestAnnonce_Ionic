@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="selectedAnnonce.categorie == 'immobilier'">
 
   <ion-grid>
     <ion-row>
@@ -37,12 +37,20 @@
  
     <ion-row>
       <ion-col >
-        <ion-list><ion-item><ion-label color="medium">Superficie: </ion-label> <ion-label>{{ selectedAnnonce.superficie }}</ion-label></ion-item></ion-list>
+        <ion-list><ion-item><ion-label color="medium">Superficie: </ion-label> <ion-label>{{ selectedAnnonce.superficie }} m²</ion-label></ion-item></ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col >
         <ion-list><ion-item><ion-label color="medium">Nombre de piece: </ion-label> <ion-label>{{ selectedAnnonce.nbPiece }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked" color="medium">Description: </ion-label>
+             <p>{{ selectedAnnonce.desc }}</p></ion-item></ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -57,6 +65,87 @@
   </div>
 </ion-col>
 </ion-row>
+</ion-grid>
+
+</ion-content>
+
+
+<ion-content *ngIf="selectedAnnonce.categorie == 'vehicule'">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-slides pager="true" [options]="">
+          <ion-slide *ngFor="let i of selectedAnnonce.images">
+           <ion-img [src]="i"></ion-img>
+          </ion-slide>
+         
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-item> <h5>{{ selectedAnnonce.titre }}</h5> 
+       <ion-badge slot="end">{{selectedAnnonce.prix}} TND</ion-badge></ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Marque: </ion-label> <ion-label>{{ selectedAnnonce.marque }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Modèle: </ion-label> <ion-label>{{ selectedAnnonce.modele }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Puissance fiscale: </ion-label> <ion-label>{{ selectedAnnonce.puissance }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Energie: </ion-label> <ion-label>{{ selectedAnnonce.energie }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Kilométrage: </ion-label> <ion-label>{{ selectedAnnonce.kilometrage }} km</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Couleur: </ion-label> <ion-label>{{ selectedAnnonce.couleur }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list><ion-item><ion-label color="medium">Energie: </ion-label> <ion-label>{{ selectedAnnonce.energie }}</ion-label></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked" color="medium">Description: </ion-label>
+             <p>{{ selectedAnnonce.desc }}</p></ion-item></ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="10" offset="1">
+  <div>
+    <strong>D'autres options</strong>
+    <ion-list>
+      <ion-item *ngFor="let option of selectedAnnonce.options">
+        <ion-label>{{ option }} </ion-label>
+     
+      </ion-item> </ion-list>
+  </div>
+</ion-col>
+</ion-row>
+
 </ion-grid>
 
 </ion-content>
